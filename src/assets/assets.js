@@ -12,9 +12,9 @@ import project_image5 from './project_image5.png'
 import project_image6 from './project_image6.png'
 import project_image7 from './project_image7.png'
 import project_image8 from './project_image8.jpg'
-import profile_pic1 from './profile1.png'
-import profile_pic2 from './profile2.png'
-import profile_pic3 from './profile3.png'
+import profile_pic1 from './Profile1.png'
+import profile_pic2 from './Profile2.png'
+import profile_pic3 from './Profile3.png'
 import star_icon from './star-icon.png'
 
 export const assets = {
