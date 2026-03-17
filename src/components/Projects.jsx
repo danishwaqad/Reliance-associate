@@ -74,7 +74,7 @@ const Projects = () => {
               >
                 <img className='w-full h-auto mb-14' src={project.image} alt={project.title} />
                 <div className='absolute left-0 right-0 bottom-5 flex justify-center'>
-                  <div className='inline-block bg-white w-3/4 px-4 py-2 shadow-md shadow-purple-500'>
+                  <div className='inline-block bg-white w-3/4 px-4 py-2 shadow-md shadow-emerald-500/40'>
                     <h2 className='text-xl font-semibold text-gray-800'>{project.title}</h2>
                     <p className='text-gray-500 text-sm'>
                       {project.price} <span className='px-1'>|</span> {project.location}

@@ -19,27 +19,38 @@ const Navbar = () => {
   return (
     <div className="absolute top-0 left-0 w-full z-10">
       <div className="container mx-auto flex justify-between items-center py-4 px-6 md:px-20 lg:px-28 bg-transparent">
-        <img src={assets.logo} alt="logo"></img>
+        <div className="flex items-center gap-3">
+          <img
+            src={assets.logo}
+            alt="Reliance Associate logo"
+            className="h-10 sm:h-12 w-auto object-contain drop-shadow-md"
+          />
+          <span className="hidden sm:inline-block text-lg sm:text-xl font-semibold tracking-wide text-white drop-shadow-md">
+            Reliance Associate
+          </span>
+        </div>
         <ul className="hidden md:flex gap-7 text-white">
-          <a href="#Header" className="cursor-pointer hover:text-purple-300">
+          <a href="#Header" className="cursor-pointer hover:text-emerald-300">
             Home
           </a>
-          <a href="#About" className="cursor-pointer hover:text-purple-300">
+          <a href="#About" className="cursor-pointer hover:text-emerald-300">
             About
           </a>
-          <a href="#Projects" className="cursor-pointer hover:text-purple-300">
+          <a href="#Projects" className="cursor-pointer hover:text-emerald-300">
             Projects
           </a>
           <a
             href="#Testimonials"
-            className="cursor-pointer hover:text-purple-300"
+            className="cursor-pointer hover:text-emerald-300"
           >
             Testimonials
           </a>
         </ul>
-        <button className="hidden md:block bg-purple-600 px-8 py-2 rounded-full text-white">
+        {/* Auth / Sign up button (disabled – no backend yet)
+        <button className="hidden md:block bg-emerald-600 px-8 py-2 rounded-full text-white">
           Sign Up
         </button>
+        */}
         <img
           src={assets.menu_icon}
           onClick={() => setDisplayMobileMenu(!displayMobileMenu)}
@@ -50,7 +61,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {displayMobileMenu && (
         <div
-          className={`md:hidden fixed w-3/5 right-0 top-0 bottom-0 bg-gradient-to-b from-purple-900/60 to-black/60 backdrop-blur-sm shadow-lg transition-all`}
+          className={`md:hidden fixed w-3/5 right-0 top-0 bottom-0 bg-gradient-to-b from-emerald-900/70 to-slate-950/80 backdrop-blur-sm shadow-lg transition-all`}
         >
           <div className="flex justify-end p-6">
             <img
@@ -60,32 +71,32 @@ const Navbar = () => {
               onClick={() => setDisplayMobileMenu(!displayMobileMenu)}
             />
           </div>
-          <ul className="flex flex-col items-center gap-3 mt-5 py-6 px-5 text-lg font-semibold text-purple-900">
+          <ul className="flex flex-col items-center gap-3 mt-5 py-6 px-5 text-lg font-semibold text-emerald-50">
             <a
               href="#Header"
               onClick={() => setDisplayMobileMenu(!displayMobileMenu)}
-              className="px-5 py-3 rounded-full text-white hover:bg-purple-200 hover:text-purple-900 transition-all"
+              className="px-5 py-3 rounded-full text-white hover:bg-emerald-200 hover:text-emerald-900 transition-all"
             >
               Home
             </a>
             <a
               href="#About"
               onClick={() => setDisplayMobileMenu(!displayMobileMenu)}
-              className="px-5 py-3 rounded-full text-white hover:bg-purple-200 hover:text-purple-900 transition-all"
+              className="px-5 py-3 rounded-full text-white hover:bg-emerald-200 hover:text-emerald-900 transition-all"
             >
               About
             </a>
             <a
               href="#Projects"
               onClick={() => setDisplayMobileMenu(!displayMobileMenu)}
-              className="px-5 py-3 rounded-full text-white hover:bg-purple-200 hover:text-purple-900 transition-all"
+              className="px-5 py-3 rounded-full text-white hover:bg-emerald-200 hover:text-emerald-900 transition-all"
             >
               Projects
             </a>
             <a
               href="#Testimonials"
               onClick={() => setDisplayMobileMenu(!displayMobileMenu)}
-              className="px-5 py-3 rounded-full text-white hover:bg-purple-200 hover:text-purple-900 transition-all"
+              className="px-5 py-3 rounded-full text-white hover:bg-emerald-200 hover:text-emerald-900 transition-all"
             >
               Testimonials
             </a>
