@@ -91,24 +91,24 @@ export const projectData = [
 
 export const testimonials = [
     {
-      name: "Kamal Perera",
-      title: "Software Engineer",
+      name: "Ahmed Khan",
+      title: "Software Engineer (Lahore)",
       image: profile_pic1,
       alt: "Customer1 image",
       rating: 5,
       text: "Your team helped me find my dream home. Their dedication, expertise, and attention to detail made the entire process seamless. I couldn't be happier with my new home!",
     },
     {
-      name: "Sanjaya Shehan",
-      title: "Real Estate Investor",
+      name: "Bilal Hussain",
+      title: "Real Estate Investor (Islamabad)",
       image: profile_pic2,
       alt: "Customer2 image",
       rating: 4,
       text: "I’ve worked with many dealers, but You stand out. Their professionalism and the quality of their properties are unmatched. I highly recommend them for anyone looking to invest in real estate.",
     },
     {
-      name: "Nayana Salmal",
-      title: "Business Owner",
+      name: "Ayesha Malik",
+      title: "Business Owner (Multan)",
       image: profile_pic3,
       alt: "Customer3 image",
       rating: 5,
