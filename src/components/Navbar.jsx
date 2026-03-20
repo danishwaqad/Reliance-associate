@@ -25,7 +25,7 @@ const Navbar = () => {
             alt="Reliance Associate logo"
             className="h-10 sm:h-12 w-auto object-contain drop-shadow-md"
           />
-          <span className="hidden sm:inline-block text-lg sm:text-xl font-semibold tracking-wide text-white drop-shadow-md">
+          <span className="inline-block text-sm sm:text-xl font-semibold tracking-wide text-white drop-shadow-md">
             Reliance Associate
           </span>
         </div>
@@ -44,6 +44,9 @@ const Navbar = () => {
             className="cursor-pointer hover:text-emerald-300"
           >
             Testimonials
+          </a>
+          <a href="#Contact" className="cursor-pointer hover:text-emerald-300">
+            Contact
           </a>
         </ul>
         {/* Auth / Sign up button (disabled – no backend yet)
@@ -99,6 +102,13 @@ const Navbar = () => {
               className="px-5 py-3 rounded-full text-white hover:bg-emerald-200 hover:text-emerald-900 transition-all"
             >
               Testimonials
+            </a>
+            <a
+              href="#Contact"
+              onClick={() => setDisplayMobileMenu(!displayMobileMenu)}
+              className="px-5 py-3 rounded-full text-white hover:bg-emerald-200 hover:text-emerald-900 transition-all"
+            >
+              Contact
             </a>
           </ul>
         </div>

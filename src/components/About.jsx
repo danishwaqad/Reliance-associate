@@ -9,7 +9,7 @@ const About = () => {
     transition={{duration: 1.5}}
     whileInView={{opacity: 1, x:0}}
     viewport={{once: true, amount: 0.5}}
-    className='flex flex-col items-center justify-center container mx-auto p-14 md:px-20 lg:pd-32 w-full overflow-hidden' id='About'>
+    className='flex flex-col items-center justify-center container mx-auto px-6 pt-8 pb-5 md:px-12 md:pt-10 md:pb-6 lg:px-16 w-full overflow-hidden bg-white text-slate-900 rounded-2xl' id='About'>
         <h1 className='text-2xl sm:text-4xl font-bold mb-2'>About <span className='underline underline-offset-4 decoration-1 under font-light'>Reliance Associate</span></h1>
         <p className='text-gray-500 max-w-2xl text-center mb-8 text-sm md:text-base'>
           Reliance Associate is a multidisciplinary firm providing real estate, construction, tax, financial and IT‑enabled

@@ -36,7 +36,7 @@ const Projects = () => {
     transition={{duration: 1.5}}
     whileInView={{opacity: 1, x:0}}
     viewport={{once: true,amount: 0.5}}
-    className='container mx-auto py-4 pt-16 px-6 md:px-20 lg:px-24 my-12 w-full overflow-hidden' id='Projects'>
+    className='container mx-auto px-6 py-6 md:px-12 md:py-8 lg:px-16 mt-1 mb-10 w-full overflow-hidden bg-white text-slate-900 rounded-2xl' id='Projects'>
       <h1 className='text-2xl sm:text-4xl font-bold mb-2 text-center'>
         Projects <span className='underline underline-offset-4 decoration-1 font-light'>Completed</span>
       </h1>
