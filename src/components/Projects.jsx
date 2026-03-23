@@ -5,9 +5,11 @@ import { motion } from 'framer-motion';
 const Projects = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardsToShow, setCardsToShow] = useState(1);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const updateCardToShow = () => {
+      setIsMobile(window.innerWidth < 768);
       if (window.innerWidth >= 1024) {
         setCardsToShow(4); 
       } else {
@@ -32,10 +34,10 @@ const Projects = () => {
 
   return (
     <motion.div 
-    initial={{opacity: 0, x: -200}}
+    initial={isMobile ? {opacity: 1, x: 0} : {opacity: 0, x: -200}}
     transition={{duration: 1.5}}
     whileInView={{opacity: 1, x:0}}
-    viewport={{once: true,amount: 0.5}}
+    viewport={{once: true,amount: 0.15}}
     className='container mx-auto px-6 py-6 md:px-12 md:py-8 lg:px-16 mt-1 mb-10 w-full overflow-hidden bg-white text-slate-900 rounded-2xl' id='Projects'>
       <h1 className='text-2xl sm:text-4xl font-bold mb-2 text-center'>
         Projects <span className='underline underline-offset-4 decoration-1 font-light'>Completed</span>

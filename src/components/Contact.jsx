@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
 
 const Contact = () => {
-    // Not Implement a method for submit a form
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const updateIsMobile = () => setIsMobile(window.innerWidth < 768);
+    updateIsMobile();
+    window.addEventListener("resize", updateIsMobile);
+    return () => window.removeEventListener("resize", updateIsMobile);
+  }, []);
+
+  // Not Implement a method for submit a form
   return (
     <motion.div
-      initial={{opacity: 0, x: -200}}
+      initial={isMobile ? {opacity: 1, x: 0} : {opacity: 0, x: -200}}
       transition={{duration: 1}}
       whileInView={{opacity: 1, x:0}}
-      viewport={{once: true,amount: 0.5}}
+      viewport={{once: true,amount: 0.15}}
       className="text-center p-6 py-20 lg:px-32 w-full overflow-hidden bg-white text-slate-900 rounded-2xl"
       id="Contact"
     >
