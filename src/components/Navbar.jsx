@@ -33,21 +33,26 @@ const Navbar = () => {
     }, []);
 
     useEffect(() => {
-      const footer = document.getElementById('Footer');
-      if (!footer) return undefined;
+      const updateFooterVisibility = () => {
+        const footer = document.getElementById('Footer');
+        if (!footer) return;
 
-      const footerObserver = new IntersectionObserver(
-        ([entry]) => {
-          setIsFooterVisible(entry.isIntersecting);
-          if (entry.isIntersecting) {
-            setDisplayMobileMenu(false);
-          }
-        },
-        { threshold: 0.15 }
-      );
+        const footerTop = footer.getBoundingClientRect().top;
+        const isVisible = footerTop <= window.innerHeight;
+        setIsFooterVisible(isVisible);
 
-      footerObserver.observe(footer);
-      return () => footerObserver.disconnect();
+        if (isVisible) {
+          setDisplayMobileMenu(false);
+        }
+      };
+
+      updateFooterVisibility();
+      window.addEventListener('scroll', updateFooterVisibility, { passive: true });
+      window.addEventListener('resize', updateFooterVisibility);
+      return () => {
+        window.removeEventListener('scroll', updateFooterVisibility);
+        window.removeEventListener('resize', updateFooterVisibility);
+      };
     }, []);
 
     //Handle the scrolling when mobile menu bar is open
