@@ -6,6 +6,7 @@ import Testimonials from './components/Testimonials'
 import Contact from './components/Contact'
 import { ToastContainer } from 'react-toastify';
 import Footer from './components/Footer'
+import ChatWidget from './components/ChatWidget';
 
 const App = () => {
   useEffect(() => {
@@ -39,6 +40,7 @@ const App = () => {
       <Testimonials />
       <Contact />
       <Footer />
+      <ChatWidget />
     </div>
   )
 }
