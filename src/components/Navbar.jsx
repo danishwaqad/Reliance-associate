@@ -4,6 +4,7 @@ import { assets } from '../assets/assets';
 const Navbar = () => {
     const [displayMobileMenu, setDisplayMobileMenu] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isFooterVisible, setIsFooterVisible] = useState(false);
 
     const navLinks = [
       { label: 'Home', sectionId: 'Header', path: '/' },
@@ -31,6 +32,24 @@ const Navbar = () => {
       return () => window.removeEventListener('scroll', updateNavbarState);
     }, []);
 
+    useEffect(() => {
+      const footer = document.getElementById('Footer');
+      if (!footer) return undefined;
+
+      const footerObserver = new IntersectionObserver(
+        ([entry]) => {
+          setIsFooterVisible(entry.isIntersecting);
+          if (entry.isIntersecting) {
+            setDisplayMobileMenu(false);
+          }
+        },
+        { threshold: 0.15 }
+      );
+
+      footerObserver.observe(footer);
+      return () => footerObserver.disconnect();
+    }, []);
+
     //Handle the scrolling when mobile menu bar is open
     // useEffect( () => {
     //     if(displayMobileMenu){
@@ -44,7 +63,11 @@ const Navbar = () => {
     // },[displayMobileMenu])
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50">
+    <div
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        isFooterVisible ? 'opacity-0 -translate-y-5 pointer-events-none' : 'opacity-100 translate-y-0'
+      }`}
+    >
       <div
         className={`container mx-auto flex justify-between items-center py-4 px-6 md:px-20 lg:px-28 transition-all duration-300 ${
           isScrolled ? 'bg-slate-950/70 backdrop-blur-md shadow-md shadow-black/20 rounded-b-xl' : 'bg-transparent'
