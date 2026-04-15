@@ -7,3 +7,26 @@
 *{
   font-family: Outfit;
 }
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* Hide scrollbar while preserving scrolling */
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+#Header,
+#About,
+#Projects,
+#Testimonials,
+#Contact {
+  scroll-margin-top: 88px;
+}

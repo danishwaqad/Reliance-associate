@@ -1,4 +1,4 @@
-import logo from './logo.jpg'
+import logo from './logo.png'
 import menu_icon from './menu-icon.svg'
 import close_icon from './close-icon.svg'
 import brand_image from './brand_img.png'

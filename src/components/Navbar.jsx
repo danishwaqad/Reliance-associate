@@ -3,6 +3,33 @@ import { assets } from '../assets/assets';
 
 const Navbar = () => {
     const [displayMobileMenu, setDisplayMobileMenu] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    const navLinks = [
+      { label: 'Home', sectionId: 'Header', path: '/' },
+      { label: 'About', sectionId: 'About', path: '/about' },
+      { label: 'Projects', sectionId: 'Projects', path: '/projects' },
+      { label: 'Testimonials', sectionId: 'Testimonials', path: '/testimonials' },
+      { label: 'Contact', sectionId: 'Contact', path: '/contact' },
+    ];
+
+    const handleNavigate = (sectionId, path) => {
+      const section = document.getElementById(sectionId);
+      if (!section) return;
+
+      if (window.location.pathname !== path) {
+        window.history.pushState({}, '', path);
+      }
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setDisplayMobileMenu(false);
+    };
+
+    useEffect(() => {
+      const updateNavbarState = () => setIsScrolled(window.scrollY > 20);
+      updateNavbarState();
+      window.addEventListener('scroll', updateNavbarState);
+      return () => window.removeEventListener('scroll', updateNavbarState);
+    }, []);
 
     //Handle the scrolling when mobile menu bar is open
     // useEffect( () => {
@@ -17,8 +44,12 @@ const Navbar = () => {
     // },[displayMobileMenu])
 
   return (
-    <div className="absolute top-0 left-0 w-full z-10">
-      <div className="container mx-auto flex justify-between items-center py-4 px-6 md:px-20 lg:px-28 bg-transparent">
+    <div className="fixed top-0 left-0 w-full z-50">
+      <div
+        className={`container mx-auto flex justify-between items-center py-4 px-6 md:px-20 lg:px-28 transition-all duration-300 ${
+          isScrolled ? 'bg-slate-950/70 backdrop-blur-md shadow-md shadow-black/20 rounded-b-xl' : 'bg-transparent'
+        }`}
+      >
         <div className="flex items-center gap-3">
           <img
             src={assets.logo}
@@ -30,24 +61,17 @@ const Navbar = () => {
           </span>
         </div>
         <ul className="hidden md:flex gap-7 text-white">
-          <a href="#Header" className="cursor-pointer hover:text-emerald-300">
-            Home
-          </a>
-          <a href="#About" className="cursor-pointer hover:text-emerald-300">
-            About
-          </a>
-          <a href="#Projects" className="cursor-pointer hover:text-emerald-300">
-            Projects
-          </a>
-          <a
-            href="#Testimonials"
-            className="cursor-pointer hover:text-emerald-300"
-          >
-            Testimonials
-          </a>
-          <a href="#Contact" className="cursor-pointer hover:text-emerald-300">
-            Contact
-          </a>
+          {navLinks.map(({ label, sectionId, path }) => (
+            <li key={sectionId}>
+              <button
+                type="button"
+                onClick={() => handleNavigate(sectionId, path)}
+                className="cursor-pointer hover:text-emerald-300"
+              >
+                {label}
+              </button>
+            </li>
+          ))}
         </ul>
         {/* Auth / Sign up button (disabled – no backend yet)
         <button className="hidden md:block bg-emerald-600 px-8 py-2 rounded-full text-white">
@@ -75,41 +99,17 @@ const Navbar = () => {
             />
           </div>
           <ul className="flex flex-col items-center gap-3 mt-5 py-6 px-5 text-lg font-semibold text-emerald-50">
-            <a
-              href="#Header"
-              onClick={() => setDisplayMobileMenu(!displayMobileMenu)}
-              className="px-5 py-3 rounded-full text-white hover:bg-emerald-200 hover:text-emerald-900 transition-all"
-            >
-              Home
-            </a>
-            <a
-              href="#About"
-              onClick={() => setDisplayMobileMenu(!displayMobileMenu)}
-              className="px-5 py-3 rounded-full text-white hover:bg-emerald-200 hover:text-emerald-900 transition-all"
-            >
-              About
-            </a>
-            <a
-              href="#Projects"
-              onClick={() => setDisplayMobileMenu(!displayMobileMenu)}
-              className="px-5 py-3 rounded-full text-white hover:bg-emerald-200 hover:text-emerald-900 transition-all"
-            >
-              Projects
-            </a>
-            <a
-              href="#Testimonials"
-              onClick={() => setDisplayMobileMenu(!displayMobileMenu)}
-              className="px-5 py-3 rounded-full text-white hover:bg-emerald-200 hover:text-emerald-900 transition-all"
-            >
-              Testimonials
-            </a>
-            <a
-              href="#Contact"
-              onClick={() => setDisplayMobileMenu(!displayMobileMenu)}
-              className="px-5 py-3 rounded-full text-white hover:bg-emerald-200 hover:text-emerald-900 transition-all"
-            >
-              Contact
-            </a>
+            {navLinks.map(({ label, sectionId, path }) => (
+              <li key={`mobile-${sectionId}`}>
+                <button
+                  type="button"
+                  onClick={() => handleNavigate(sectionId, path)}
+                  className="px-5 py-3 rounded-full text-white hover:bg-emerald-200 hover:text-emerald-900 transition-all"
+                >
+                  {label}
+                </button>
+              </li>
+            ))}
           </ul>
         </div>
       )}
